@@ -1,3 +1,5 @@
 .idea/
 *.iml
-src/main/resources/*
+src/main/resources/soc-pokec-relationships.txt
+src/main/resources/soc-pokec-readme.txt
+target
