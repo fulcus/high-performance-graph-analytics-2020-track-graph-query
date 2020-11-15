@@ -7,10 +7,17 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class CSR implements CompressedSparseRow {
+    private int[] ptr;
+    private int[] idx;
 
     public static void main(String[] args) {
         CSR csr = new CSR();
-        csr.buildFromFile("src/main/resources/soc-test.txt");
+        csr.buildFromFile("src/main/resources/soc-pokec-relationships.txt");
+    }
+
+    public CSR(){
+        ptr = new int[1000];
+        idx = new int[1000];
     }
 
     /**
@@ -38,21 +45,37 @@ public class CSR implements CompressedSparseRow {
         String inputString;
         String[] numbers = null;
 
+        int i_ptr = 0, i_idx = 0;
         for (int i = 0; i < linesToRead; i++) {
             try {
                 inputString = br.readLine();
                 if (inputString == null)
                     break;
-                numbers = inputString.split(" ");
+                numbers = inputString.split("\t");
 
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
+            System.out.println(numbers[0]);
             int n = Integer.parseInt(numbers[0]);
             int m = Integer.parseInt(numbers[1]);
             System.out.println("Relation " + i + " - " + n + " " + m);
 
+            // Aggiunge un nodo di partenza nella lista dei pointer
+            if(i_ptr != n){
+                ptr[n-1] = i_idx;
+                i_ptr = n;
+            }
+
+            // Aggiunge nodo di arrivo del collegamneto
+            idx[i_idx++] = m;
+        }
+
+        System.out.println("______________________________");
+        for(int i = 0; i < i_ptr-1; i++){
+            for(int j = 0; j < (ptr[i+1] - ptr[i]); j++){
+                System.out.println((i+1)+" "+idx[ptr[i]+j]);
+            }
         }
     }
 
