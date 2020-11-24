@@ -31,14 +31,14 @@ public class HashJoin implements Table {
             e.printStackTrace();
         }
 
-        hashMap = new HashMap<>(k*linesToRead*batches);
+        hashMap = new HashMap<>(k * linesToRead * batches);
 
         for (int i = 0; i < batches; i++) {
-            readInput(linesToRead);
+            readInput(linesToRead, i);
         }
     }
 
-    private void readInput(int linesToRead) {
+    private void readInput(int linesToRead, int batchNumber) {
 
         String inputString;
         String[] numbers = null;
@@ -56,7 +56,8 @@ public class HashJoin implements Table {
 
             int n = Integer.parseInt(numbers[0]);
             int m = Integer.parseInt(numbers[1]);
-            System.out.println("batch " + batches + ", relation " + i + ": " + n + " -> " + m);
+
+            System.out.println("relation " + (batchNumber * linesToRead + (i + 1)) + ": " + n + " -> " + m);
 
             if (hashMap.containsKey(n)) {
                 hashMap.get(n).add(m);
