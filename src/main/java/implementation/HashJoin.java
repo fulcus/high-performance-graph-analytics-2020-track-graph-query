@@ -1,4 +1,7 @@
-package data;
+package implementation;
+
+import data.Table;
+import engine.HashJoinEngine;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -8,7 +11,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class HashJoin implements Table {
+public class HashJoin implements Table, HashJoinEngine {
 
     private HashMap<Integer, List<Integer>> hashMap;
     private BufferedReader br;
@@ -69,5 +72,10 @@ public class HashJoin implements Table {
 
         }
 
+    }
+
+    @Override
+    public ArrayList<Integer> join(Table tab1, Integer element_id) {
+        return null;
     }
 }

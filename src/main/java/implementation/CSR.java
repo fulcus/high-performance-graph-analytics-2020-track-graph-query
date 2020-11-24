@@ -1,4 +1,7 @@
-package data;
+package implementation;
+
+import data.CompressedSparseRow;
+import engine.CSREngine;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -6,14 +9,12 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class CSR implements CompressedSparseRow {
+public class CSR implements CompressedSparseRow, CSREngine {
     private BufferedReader br;
     private final int linesToRead = 30622564;
 
     private int[] ptr;
     private int[] idx;
-
-    public CSR(){}
 
     /**
      * Builds the CSR by reading information from soc-pokec-relationships.txt
@@ -108,4 +109,8 @@ public class CSR implements CompressedSparseRow {
         return intArray;
     }
 
+    @Override
+    public ArrayList<Integer> traverse(CompressedSparseRow csr, Integer vertex_id) {
+        return null;
+    }
 }
