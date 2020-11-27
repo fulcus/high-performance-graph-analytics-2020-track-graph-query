@@ -9,7 +9,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class CSR implements CompressedSparseRow, CSREngine {
+public class CSR implements CompressedSparseRow {
     private BufferedReader br;
     private final int linesToRead = 30622564;
 
@@ -107,10 +107,5 @@ public class CSR implements CompressedSparseRow, CSREngine {
             intArray[i] = integerArrayList.get(i);
         }
         return intArray;
-    }
-
-    @Override
-    public ArrayList<Integer> traverse(CompressedSparseRow csr, Integer vertex_id) {
-        return null;
     }
 }
