@@ -4,12 +4,11 @@ import data.CompressedSparseRow;
 import engine.CSREngine;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class CSRE implements CSREngine {
     @Override
     public ArrayList<Integer[]> traverse(CompressedSparseRow csr, Integer vertex_id, Integer depth) {
-        ArrayList<Integer[]> results = new ArrayList<Integer[]>();
+        ArrayList<Integer[]> results = new ArrayList<>();
         Integer[] query_result = new Integer[depth+1];
         query_result[0] = vertex_id;
 
