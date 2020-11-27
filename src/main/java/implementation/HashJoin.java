@@ -1,19 +1,18 @@
 package implementation;
 
 import data.Table;
-import engine.HashJoinEngine;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 
-public class HashJoin implements Table, HashJoinEngine {
+public class HashJoin implements Table {
 
-    private HashMap<Integer, List<Integer>> hashMap;
+    private HashMap<Integer, ArrayList<Integer>> hashMap;
     private BufferedReader br;
     private int linesToRead = 1000;
     private int initList = 5;
@@ -23,6 +22,23 @@ public class HashJoin implements Table, HashJoinEngine {
     public static void main(String[] args) {
         HashJoin hash = new HashJoin();
         hash.buildFromFile("src/main/resources/soc-pokec-relationships.txt");
+
+        for (int i = 1; i <= 3000; i++) {
+            System.out.println("Neighbors of " + i + " node!");
+            System.out.println(hash.getNeighbors(i));
+        }
+
+        HashJoinE hashJoinE = new HashJoinE();
+
+        for (int i = 1; i <= 1; i++) {
+            System.out.println("Traverse of " + i + " node!");
+            ArrayList<Integer[]> queryResult = hashJoinE.join(hash, i, 2);
+
+            for (Integer[] integers : queryResult) {
+                System.out.println(Arrays.toString(integers));
+            }
+        }
+
     }
 
     @Override
@@ -69,13 +85,11 @@ public class HashJoin implements Table, HashJoinEngine {
                 values.add(m);
                 hashMap.put(n, values);
             }
-
         }
-
     }
 
-    @Override
-    public ArrayList<Integer> join(Table tab1, Integer element_id) {
-        return null;
+    public ArrayList<Integer> getNeighbors(Integer vertex_id) {
+        return hashMap.get(vertex_id);
     }
+
 }
