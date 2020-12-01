@@ -14,32 +14,9 @@ public class HashJoin implements Table {
 
     private HashMap<Integer, ArrayList<Integer>> hashMap;
     private BufferedReader br;
-    private int linesToRead = 1000;
-    private int initList = 5;
-    private int batches = 3; //number of blocks of linesToRead to scan
+    private int linesToRead = 3000;
+    private int initNeighborsList = 5;
     private int k = 1; //multiplication factor for hashmap size
-
-    public static void main(String[] args) {
-        HashJoin hash = new HashJoin();
-        hash.buildFromFile("src/main/resources/soc-pokec-relationships.txt");
-
-        for (int i = 1; i <= 3000; i++) {
-            System.out.println("Neighbors of " + i + " node!");
-            System.out.println(hash.getNeighbors(i));
-        }
-
-        HashJoinE hashJoinE = new HashJoinE();
-
-        for (int i = 1; i <= 1; i++) {
-            System.out.println("Traverse of " + i + " node!");
-            ArrayList<Integer[]> queryResult = hashJoinE.join(hash, i, 2);
-
-            for (Integer[] integers : queryResult) {
-                System.out.println(Arrays.toString(integers));
-            }
-        }
-
-    }
 
     @Override
     public void buildFromFile(String filepath) {
@@ -50,14 +27,11 @@ public class HashJoin implements Table {
             e.printStackTrace();
         }
 
-        hashMap = new HashMap<>(k * linesToRead * batches);
-
-        for (int i = 0; i < batches; i++) {
-            readInput(linesToRead, i);
-        }
+        hashMap = new HashMap<>(k * linesToRead);
+        readInput(linesToRead);
     }
 
-    private void readInput(int linesToRead, int batchNumber) {
+    private void readInput(int linesToRead) {
 
         String inputString;
         String[] numbers = null;
@@ -76,14 +50,14 @@ public class HashJoin implements Table {
             int n = Integer.parseInt(numbers[0]);
             int m = Integer.parseInt(numbers[1]);
 
-            System.out.println("relation " + (batchNumber * linesToRead + (i + 1)) + ": " + n + " -> " + m);
+            System.out.println("relation " + i + ": " + n + " -> " + m);
 
             if (hashMap.containsKey(n)) {
                 hashMap.get(n).add(m);
             } else {
-                ArrayList<Integer> values = new ArrayList<>(initList);
-                values.add(m);
-                hashMap.put(n, values);
+                ArrayList<Integer> neighbors = new ArrayList<>(initNeighborsList);
+                neighbors.add(m);
+                hashMap.put(n, neighbors);
             }
         }
     }

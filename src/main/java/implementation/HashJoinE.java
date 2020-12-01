@@ -18,6 +18,7 @@ public class HashJoinE implements HashJoinEngine {
     }
 
     private void subtraverse(Table tab1, ArrayList<Integer[]> results, Integer elementId, Integer[] queryResult, int depth) {
+
         if (depth == 0) {
             results.add(queryResult);
             return;
