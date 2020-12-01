@@ -1,29 +1,22 @@
 package implementation;
 
 import data.Table;
-import engine.HashJoinEngine;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 
-public class HashJoin implements Table, HashJoinEngine {
+public class HashJoin implements Table {
 
-    private HashMap<Integer, List<Integer>> hashMap;
+    private HashMap<Integer, ArrayList<Integer>> hashMap;
     private BufferedReader br;
-    private int linesToRead = 1000;
-    private int initList = 5;
-    private int batches = 3; //number of blocks of linesToRead to scan
+    private int linesToRead = 3000;
+    private int initNeighborsList = 5;
     private int k = 1; //multiplication factor for hashmap size
-
-    public static void main(String[] args) {
-        HashJoin hash = new HashJoin();
-        hash.buildFromFile("src/main/resources/soc-pokec-relationships.txt");
-    }
 
     @Override
     public void buildFromFile(String filepath) {
@@ -34,14 +27,11 @@ public class HashJoin implements Table, HashJoinEngine {
             e.printStackTrace();
         }
 
-        hashMap = new HashMap<>(k * linesToRead * batches);
-
-        for (int i = 0; i < batches; i++) {
-            readInput(linesToRead, i);
-        }
+        hashMap = new HashMap<>(k * linesToRead);
+        readInput(linesToRead);
     }
 
-    private void readInput(int linesToRead, int batchNumber) {
+    private void readInput(int linesToRead) {
 
         String inputString;
         String[] numbers = null;
@@ -60,22 +50,20 @@ public class HashJoin implements Table, HashJoinEngine {
             int n = Integer.parseInt(numbers[0]);
             int m = Integer.parseInt(numbers[1]);
 
-            System.out.println("relation " + (batchNumber * linesToRead + (i + 1)) + ": " + n + " -> " + m);
+            System.out.println("relation " + i + ": " + n + " -> " + m);
 
             if (hashMap.containsKey(n)) {
                 hashMap.get(n).add(m);
             } else {
-                ArrayList<Integer> values = new ArrayList<>(initList);
-                values.add(m);
-                hashMap.put(n, values);
+                ArrayList<Integer> neighbors = new ArrayList<>(initNeighborsList);
+                neighbors.add(m);
+                hashMap.put(n, neighbors);
             }
-
         }
-
     }
 
-    @Override
-    public ArrayList<Integer> join(Table tab1, Integer element_id) {
-        return null;
+    public ArrayList<Integer> getNeighbors(Integer vertex_id) {
+        return hashMap.get(vertex_id);
     }
+
 }

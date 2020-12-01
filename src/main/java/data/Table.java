@@ -1,5 +1,7 @@
 package data;
 
+import java.util.ArrayList;
+
 public interface Table {
 
   /**
@@ -7,7 +9,8 @@ public interface Table {
    *
    * @param filepath path of input file
    */
-  public void buildFromFile(String filepath);
+  void buildFromFile(String filepath);
 
-  /* Feel free to add any other useful method you can think of */
+  ArrayList<Integer> getNeighbors(Integer vertex_id);
+
 }
