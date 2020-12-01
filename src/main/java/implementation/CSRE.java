@@ -19,6 +19,13 @@ public class CSRE implements CSREngine {
 
     private void sub_traverse(CompressedSparseRow csr, ArrayList<Integer[]> results, Integer vertex_id, Integer[] query_result, int depth){
         if(depth == 0){
+            for (int i = 0; i < query_result.length; i++) {
+                for (int j = i + 1; j < query_result.length; j++) {
+                    //TODO: Test with int data type instead of Integer
+                    if (query_result[i] == query_result[j])
+                        return;
+                }
+            }
             results.add(query_result);
             return;
         }
