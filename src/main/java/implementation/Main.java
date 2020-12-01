@@ -16,7 +16,7 @@ public class Main {
         CSRE csre = new CSRE();
         for(int i = 1; i <= 3000; i++) {
             System.out.println("Traverse of " + i + " node!");
-            ArrayList<Integer[]> query_result = csre.traverse(csr, i, 2);
+            ArrayList<Integer[]> query_result = csre.traverse(csr, i, 2, "bfs");
             for (Integer[] integers : query_result) {
                 System.out.println(Arrays.toString(integers));
             }
