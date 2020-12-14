@@ -1,6 +1,5 @@
-# dependencies: numpy
 import argparse
-import subprocess
+from subprocess import run, Popen, PIPE, STDOUT
 import time
 import os
 from datetime import datetime
@@ -18,7 +17,7 @@ FILE_RELATIONSHIPS = "soc-pokec-relationships.txt"
 ##############################
 ##############################
 
-JAR_BENCH_CMD = "java -jar {} {}"
+JAR_BENCH_CMD = "java -jar {} {} {}"
 
 def benchmark(args):
     relationships_file = RUN_PATH + args.file
@@ -26,12 +25,15 @@ def benchmark(args):
         print("File of relationships does not exist: "+relationships_file)
         exit(1)
 
+    print("Run benchmark!")
+    jarBenchCMD = JAR_BENCH_CMD.format(TARGET_JAR, relationships_file, args.num_nodes_block)
+    jar = Popen(jarBenchCMD, shell=True, stdin=PIPE, stdout=PIPE, stderr=STDOUT, close_fds=True, cwd=PROJECT_PATH)
 
-    jarBenchCMD = JAR_BENCH_CMD.format(TARGET_JAR, relationships_file)
-    result = subprocess.run(jarBenchCMD,
-                            shell=True,
-                            cwd=PROJECT_PATH)
-    result.check_returncode()
+    if jar.stdout.readline().lower() == "Dataset loaded!".lower():
+        print("Dataset loaded!")
+    else:
+        print("Dataset not loaded!")
+        exit(1)
 
 
 ##############################
@@ -46,7 +48,7 @@ if __name__ == "__main__":
                         help="If present, build the project")
     parser.add_argument("-d", "--debug", action="store_true",
                         help="If present, print debug messages")
-    parser.add_argument("-n", "--num_node_block", metavar="N", type=int, default=DEFAULT_NUM_NODES_BLOCK,
+    parser.add_argument("-n", "--num_nodes_block", metavar="N", type=int, default=DEFAULT_NUM_NODES_BLOCK,
                         help="Number of the nodes loaded from the file")
     parser.add_argument("-f", "--file", metavar="N", type=str, default=FILE_RELATIONSHIPS,
                         help="Path of the file of relationships")
@@ -55,7 +57,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     if args.build:
-        result = subprocess.run(MVN_BUILD_CMD,
+        result = run(MVN_BUILD_CMD,
                                 shell=True,
                                 cwd=PROJECT_PATH)
         result.check_returncode()
