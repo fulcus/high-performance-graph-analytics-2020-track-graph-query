@@ -11,10 +11,29 @@ public class Main {
         csr = new CSR();
         hash = new HashJoin();
 
-        String filepath = args[0];
+        if(args.length != 2){
+            System.err.println("Wrong number of parameter:");
+            System.err.println("graph.jar file_relationships lines_to_read");
+            System.exit(1);
+        }
 
-        csr.buildFromFile(filepath);
-        hash.buildFromFile(filepath);
+        String filepath = args[0];
+        int linesToRead = 0;
+        try{
+            linesToRead = Integer.parseInt(args[1]);
+        }catch (NumberFormatException e){
+            System.err.println("Error with the cast in integer of the second argument lines_to_read:");
+            e.printStackTrace();
+            System.exit(2);
+        }
+
+        if(linesToRead != 0) {
+            csr.buildFromFile(filepath, linesToRead);
+            hash.buildFromFile(filepath, linesToRead);
+        } else {
+            csr.buildFromFile(filepath);
+            hash.buildFromFile(filepath);
+        }
 
         queryengine = new QueryEngine(csr, hash);
 
