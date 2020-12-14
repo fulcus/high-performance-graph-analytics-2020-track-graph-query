@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class CSR implements CompressedSparseRow {
     private BufferedReader br;
-    private final int linesToRead = 30622564;
+    private final int maxLinesToRead = 30622564;
 
     private int[] ptr;
     private int[] idx;
@@ -21,7 +21,7 @@ public class CSR implements CompressedSparseRow {
      *
      * @param filepath path of input file
      */
-    public void buildFromFile(String filepath) {
+    public void buildFromFile(String filepath, int linesToRead) {
         // Open file
         try {
             br = new BufferedReader(new FileReader(filepath));
@@ -36,6 +36,11 @@ public class CSR implements CompressedSparseRow {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void buildFromFile(String filepath) {
+        this.buildFromFile(filepath, maxLinesToRead);
     }
 
     public ArrayList<Integer> getNeighbors(Integer vertex_id) {

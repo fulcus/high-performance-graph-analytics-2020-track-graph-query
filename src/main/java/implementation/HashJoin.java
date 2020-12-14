@@ -14,12 +14,11 @@ public class HashJoin implements Table {
 
     private HashMap<Integer, ArrayList<Integer>> hashMap;
     private BufferedReader br;
-    private int linesToRead = 3000;
+    private int maxLinesToRead = 30622564;
     private int initNeighborsList = 5;
     private int k = 1; //multiplication factor for hashmap size
 
-    @Override
-    public void buildFromFile(String filepath) {
+    public void buildFromFile(String filepath, int linesToRead) {
         //open file
         try {
             br = new BufferedReader(new FileReader(filepath));
@@ -29,6 +28,11 @@ public class HashJoin implements Table {
 
         hashMap = new HashMap<>(k * linesToRead);
         readInput(linesToRead);
+    }
+
+    @Override
+    public void buildFromFile(String filepath) {
+        buildFromFile(filepath, maxLinesToRead);
     }
 
     private void readInput(int linesToRead) {

@@ -11,8 +11,10 @@ public class Main {
         csr = new CSR();
         hash = new HashJoin();
 
-        csr.buildFromFile("src/main/resources/soc-pokec-relationships.txt");
-        hash.buildFromFile("src/main/resources/soc-pokec-relationships.txt");
+        String filepath = args[0];
+
+        csr.buildFromFile(filepath);
+        hash.buildFromFile(filepath);
 
         queryengine = new QueryEngine(csr, hash);
 
