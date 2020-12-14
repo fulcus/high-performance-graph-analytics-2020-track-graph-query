@@ -2,3 +2,5 @@
 *.iml
 src/main/resources/
 target
+
+soc-pokec-relationships.txt
