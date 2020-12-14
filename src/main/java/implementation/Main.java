@@ -34,6 +34,7 @@ public class Main {
             csr.buildFromFile(filepath);
             hash.buildFromFile(filepath);
         }
+        System.out.println("Dataset loaded!");
 
         queryengine = new QueryEngine(csr, hash);
 
@@ -43,7 +44,8 @@ public class Main {
         } */
 
         do {
-            System.out.println("Write a query:");
+            // System.out.println("Write a query:");
+            System.out.print("");
         } while (queryengine.readAndExecQuery());
     }
 }

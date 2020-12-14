@@ -54,7 +54,7 @@ public class HashJoin implements Table {
             int n = Integer.parseInt(numbers[0]);
             int m = Integer.parseInt(numbers[1]);
 
-            System.out.println("relation " + i + ": " + n + " -> " + m);
+            // System.out.println("relation " + i + ": " + n + " -> " + m);
 
             if (hashMap.containsKey(n)) {
                 hashMap.get(n).add(m);
