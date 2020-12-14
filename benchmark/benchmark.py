@@ -13,6 +13,7 @@ PROJECT_PATH = os.path.normpath(os.path.dirname(os.path.realpath(__file__))+"/..
 TARGET_DIR = PROJECT_PATH + "/target"
 TARGET_JAR = TARGET_DIR + "/graph-query-jar-with-dependencies.jar"
 FILE_RELATIONSHIPS = "soc-pokec-relationships.txt"
+ENCODING = 'utf-8'
 
 ##############################
 ##############################
@@ -26,14 +27,23 @@ def benchmark(args):
         exit(1)
 
     print("Run benchmark!")
+    start = time.time_ns()
     jarBenchCMD = JAR_BENCH_CMD.format(TARGET_JAR, relationships_file, args.num_nodes_block)
     jar = Popen(jarBenchCMD, shell=True, stdin=PIPE, stdout=PIPE, stderr=STDOUT, close_fds=True, cwd=PROJECT_PATH)
 
-    if jar.stdout.readline().lower() == "Dataset loaded!".lower():
+    if jar.stdout.readline()[:-1].decode(ENCODING).lower() == "Dataset loaded!".lower():
         print("Dataset loaded!")
     else:
         print("Dataset not loaded!")
         exit(1)
+    end = time.time_ns()
+
+    if args.debug:
+        print(f"Benchmark total execution time: {(end - start) / 1_000_000_000:.2f} seconds")
+
+    # for ln in jar.stdout:
+    #    print(ln[:-1].decode(ENCODING))
+
 
 
 ##############################
