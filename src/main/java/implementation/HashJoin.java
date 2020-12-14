@@ -14,7 +14,7 @@ public class HashJoin implements Table {
 
     private HashMap<Integer, ArrayList<Integer>> hashMap;
     private BufferedReader br;
-    private int linesToRead = 3000;
+    private int linesToRead = 30622564;
     private int initNeighborsList = 5;
     private int k = 1; //multiplication factor for hashmap size
 
@@ -35,7 +35,8 @@ public class HashJoin implements Table {
 
         String inputString;
         String[] numbers = null;
-
+        int n, m, prevN = -1;
+        ArrayList<Integer> prevNNeighbors = null;
         for (int i = 0; i < linesToRead; i++) {
 
             try {
@@ -47,18 +48,25 @@ public class HashJoin implements Table {
                 e.printStackTrace();
             }
 
-            int n = Integer.parseInt(numbers[0]);
-            int m = Integer.parseInt(numbers[1]);
+            n = Integer.parseInt(numbers[0]);
+            m = Integer.parseInt(numbers[1]);
 
             System.out.println("relation " + i + ": " + n + " -> " + m);
 
-            if (hashMap.containsKey(n)) {
-                hashMap.get(n).add(m);
+            //idea: salvare n precedente per avere confronto senza fare containsKey
+            if(n == prevN) {
+                prevNNeighbors.add(m);
+            } else if (hashMap.containsKey(n)) {
+                prevNNeighbors = hashMap.get(n);
+                prevNNeighbors.add(m);
             } else {
                 ArrayList<Integer> neighbors = new ArrayList<>(initNeighborsList);
                 neighbors.add(m);
                 hashMap.put(n, neighbors);
+                prevNNeighbors = neighbors;
             }
+
+            prevN = n;
         }
     }
 
