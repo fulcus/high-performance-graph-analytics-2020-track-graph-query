@@ -10,7 +10,7 @@ import psutil
 ##############################
 ##############################
 
-DEFAULT_NUM_NODES_BLOCK = 1000
+DEFAULT_NUM_REL_BLOCK = 1000
 RUN_PATH = os.getcwd() + "/"
 PROJECT_PATH = os.path.normpath(os.path.dirname(os.path.realpath(__file__)) + "/../")
 TARGET_DIR = PROJECT_PATH + "/target"
@@ -32,7 +32,7 @@ def benchmark(args):
 
     log_msg("Run benchmark!")
     start_load = time.time_ns()
-    jar_bench_cmd = JAR_BENCH_CMD.format(TARGET_JAR, relationships_file, args.num_nodes_block, args.algorithms,
+    jar_bench_cmd = JAR_BENCH_CMD.format(TARGET_JAR, relationships_file, args.num_rel_block, args.algorithms,
                                          args.limit_node_research)
     jar = Popen(jar_bench_cmd, shell=True, stdin=PIPE, stdout=PIPE, close_fds=True, cwd=PROJECT_PATH)
     log_msg("Pid subprocess: "+str(jar.pid))
@@ -40,8 +40,9 @@ def benchmark(args):
 
     if jar.stdout.readline()[:-1].decode(ENCODING).lower() == "Dataset loaded!".lower():
         log_msg("Dataset loaded!")
-        log_msg("Memory status after dataset loaded:")
-        log_msg(str(jar_ps.memory_full_info()))
+        mem_status = jar_ps.memory_full_info()
+        log_msg("Memory status after dataset loaded:" + str(mem_status.uss) + " bytes")
+        log_msg(str(mem_status))
     else:
         log_msg("Dataset not loaded!")
         jar.kill()
@@ -91,12 +92,12 @@ def benchmark(args):
 def gen_query(args):
     depth: int
     if args.depth == "r":
-        depth = random.randint(1, 11)
+        depth = random.randint(1, 10)
     else:
         depth = int(args.depth)
 
     query = "(a)"
-    for i in range(depth - 1):
+    for i in range(depth):
         query += "->(" + chr(98 + i) + ")"
     log_msg("Depth " + str(depth) + ": " + query)
     return str.encode(query + "\n")
@@ -149,19 +150,19 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Get args for the benchmark")
 
     parser.add_argument("-b", "--build", action="store_true",
-                        help="If present, build the project")
+                        help="If present, build the project and exits")
     parser.add_argument("-d", "--debug", action="store_true", default=False,
                         help="If present, print debug messages")
     parser.add_argument("-v", "--verbose", action="store_true", default=False,
                         help="If present, print with more details")
-    parser.add_argument("-n", "--num_nodes_block", metavar="N", type=int, default=DEFAULT_NUM_NODES_BLOCK,
-                        help="Number of the nodes loaded from the file")
+    parser.add_argument("-n", "--num_rel_block", metavar="N", type=int, default=DEFAULT_NUM_REL_BLOCK,
+                        help="Number of the relationships loaded from the dataset file")
     parser.add_argument("-f", "--file", metavar="N", type=str, default=FILE_RELATIONSHIPS,
                         help="Path of the file of relationships")
     parser.add_argument("-q", "--queries", metavar="N", type=int, default=100,
                         help="Number of the queries to run")
     parser.add_argument("-dp", "--depth", metavar="N", type=str, default="r",
-                        help="Depth of queries between 2 and 11, default is random")
+                        help="Depth of queries between 1 and 10, default is random")
     parser.add_argument("-lp", "--log_path", metavar="N", type=str, default=RUN_PATH,
                         help="The path where the logs are saved, default the path of execution of the benchmark")
     parser.add_argument("-a", "--algorithms", metavar="N", type=str, default="bbbbjjjjddd",
@@ -181,6 +182,7 @@ if __name__ == "__main__":
                      shell=True,
                      cwd=PROJECT_PATH)
         result.check_returncode()
+        exit(0)
 
     log_msg("Benchmarking...")
     start_bench = time.time_ns()
