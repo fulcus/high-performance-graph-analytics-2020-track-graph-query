@@ -157,9 +157,9 @@ if __name__ == "__main__":
                         help="Depth of queries between 2 and 11, default is random")
     parser.add_argument("-lp", "--log_path", metavar="N", type=str, default=RUN_PATH,
                         help="The path where the logs are saved, default the path of execution of the benchmark")
-    parser.add_argument("-a", "--algorithms", metavar="N", type=str, default="j,td,tb",
-                        help="Select algorithms, comma separated(j=join, tb=traverse-bfs, td=traverse-dfs). "
-                             "Default value j,td,tb")
+    parser.add_argument("-a", "--algorithms", metavar="N", type=str, default="bbbbjjjjddd",
+                        help="Select algorithm to use with specific depth (j=join, b=traverse-bfs, d=traverse-dfs). "
+                             "Default value: bbbbjjjjddd")
 
 
     # Parse the input arguments;
