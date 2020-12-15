@@ -29,7 +29,7 @@ public class Main {
             System.exit(2);
         }
         String algorithms = args[2].toLowerCase();
-        if (algorithms.length() != 11) {
+        if (algorithms.length() != 10) {
             System.err.println("Wrong length of algorithm string!");
             System.exit(3);
         }

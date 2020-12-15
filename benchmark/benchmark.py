@@ -40,8 +40,9 @@ def benchmark(args):
 
     if jar.stdout.readline()[:-1].decode(ENCODING).lower() == "Dataset loaded!".lower():
         log_msg("Dataset loaded!")
-        log_msg("Memory status after dataset loaded:")
-        log_msg(str(jar_ps.memory_full_info()))
+        mem_status = jar_ps.memory_full_info()
+        log_msg("Memory status after dataset loaded:" + str(mem_status.uss) + " bytes")
+        log_msg(str(mem_status))
     else:
         log_msg("Dataset not loaded!")
         jar.kill()
@@ -91,12 +92,12 @@ def benchmark(args):
 def gen_query(args):
     depth: int
     if args.depth == "r":
-        depth = random.randint(1, 11)
+        depth = random.randint(1, 10)
     else:
         depth = int(args.depth)
 
     query = "(a)"
-    for i in range(depth - 1):
+    for i in range(depth):
         query += "->(" + chr(98 + i) + ")"
     log_msg("Depth " + str(depth) + ": " + query)
     return str.encode(query + "\n")
@@ -161,7 +162,7 @@ if __name__ == "__main__":
     parser.add_argument("-q", "--queries", metavar="N", type=int, default=100,
                         help="Number of the queries to run")
     parser.add_argument("-dp", "--depth", metavar="N", type=str, default="r",
-                        help="Depth of queries between 2 and 11, default is random")
+                        help="Depth of queries between 1 and 10, default is random")
     parser.add_argument("-lp", "--log_path", metavar="N", type=str, default=RUN_PATH,
                         help="The path where the logs are saved, default the path of execution of the benchmark")
     parser.add_argument("-a", "--algorithms", metavar="N", type=str, default="bbbbjjjjddd",

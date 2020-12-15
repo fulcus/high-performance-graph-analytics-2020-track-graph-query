@@ -92,6 +92,6 @@ public class QueryEngine {
             return 0;
         }
 
-        return query.split("\\)").length-1;
+        return query.split("\\)").length-2;
     }
 }
