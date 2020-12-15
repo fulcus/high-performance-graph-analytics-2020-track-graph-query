@@ -20,7 +20,7 @@ ENCODING = 'utf-8'
 ##############################
 ##############################
 
-JAR_BENCH_CMD = "java -jar {} {} {} {}"
+JAR_BENCH_CMD = "java -jar {} {} {} {} {}"
 
 
 def benchmark(args):
@@ -31,7 +31,8 @@ def benchmark(args):
 
     log_msg("Run benchmark!")
     start_load = time.time_ns()
-    jar_bench_cmd = JAR_BENCH_CMD.format(TARGET_JAR, relationships_file, args.num_nodes_block, args.algorithms)
+    jar_bench_cmd = JAR_BENCH_CMD.format(TARGET_JAR, relationships_file, args.num_nodes_block, args.algorithms,
+                                         args.limit_node_research)
     jar = Popen(jar_bench_cmd, shell=True, stdin=PIPE, stdout=PIPE, close_fds=True, cwd=PROJECT_PATH)
 
     if jar.stdout.readline()[:-1].decode(ENCODING).lower() == "Dataset loaded!".lower():
@@ -160,6 +161,8 @@ if __name__ == "__main__":
     parser.add_argument("-a", "--algorithms", metavar="N", type=str, default="bbbbjjjjddd",
                         help="Select algorithm to use with specific depth (j=join, b=traverse-bfs, d=traverse-dfs). "
                              "Default value: bbbbjjjjddd")
+    parser.add_argument("-ln", "--limit_node_research", metavar="N", type=int, default=3000,
+                        help="Number of the maximum id node to research, default 3000")
 
 
     # Parse the input arguments;
