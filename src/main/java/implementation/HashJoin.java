@@ -6,16 +6,14 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
+import java.util.LinkedList;
 
 public class HashJoin implements Table {
 
-    private HashMap<Integer, ArrayList<Integer>> hashMap;
+    private HashMap<Integer, LinkedList<Integer>> hashMap;
     private BufferedReader br;
     private int maxLinesToRead = 30622564;
-    private int initNeighborsList = 5;
     private int k = 1; //multiplication factor for hashmap size
 
     public void buildFromFile(String filepath, int linesToRead) {
@@ -40,7 +38,7 @@ public class HashJoin implements Table {
         String inputString;
         String[] numbers = null;
         int n, m, prevN = -1;
-        ArrayList<Integer> prevNNeighbors = null;
+        LinkedList<Integer> prevNNeighbors = null;
         for (int i = 0; i < linesToRead; i++) {
 
             try {
@@ -64,7 +62,7 @@ public class HashJoin implements Table {
                 prevNNeighbors = hashMap.get(n);
                 prevNNeighbors.add(m);
             } else {
-                ArrayList<Integer> neighbors = new ArrayList<>(initNeighborsList);
+                LinkedList<Integer> neighbors = new LinkedList<>();
                 neighbors.add(m);
                 hashMap.put(n, neighbors);
                 prevNNeighbors = neighbors;
@@ -74,7 +72,7 @@ public class HashJoin implements Table {
         }
     }
 
-    public ArrayList<Integer> getNeighbors(Integer vertex_id) {
+    public LinkedList<Integer> getNeighbors(Integer vertex_id) {
         return hashMap.get(vertex_id);
     }
 

@@ -1,6 +1,6 @@
 package data;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 public interface Table {
 
@@ -11,6 +11,6 @@ public interface Table {
    */
   void buildFromFile(String filepath);
 
-  ArrayList<Integer> getNeighbors(Integer vertex_id);
+  LinkedList<Integer> getNeighbors(Integer vertex_id);
 
 }

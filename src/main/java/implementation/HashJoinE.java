@@ -4,6 +4,7 @@ import data.Table;
 import engine.HashJoinEngine;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class HashJoinE implements HashJoinEngine {
 
@@ -24,7 +25,7 @@ public class HashJoinE implements HashJoinEngine {
             return;
         }
 
-        ArrayList<Integer> sub_neighbors = tab1.getNeighbors(elementId);
+        LinkedList<Integer> sub_neighbors = tab1.getNeighbors(elementId);
         if(sub_neighbors == null)
             return;
         for (Integer node_id : sub_neighbors) {
