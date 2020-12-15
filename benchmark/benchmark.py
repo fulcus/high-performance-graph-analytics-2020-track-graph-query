@@ -43,22 +43,30 @@ def benchmark(args):
     if args.debug:
         print(f"Benchmark total loading relationships time: {(end_load - start_load) / 1_000_000_000:.2f} seconds")
 
+    print("#" * 70)
+
     num_queries = args.queries
     start_queries = time.time_ns()
     start_query = time.time_ns()
-    jar.stdin.write(str.encode(gen_query(args.queries == "r" if random.randint(2, 11) else int(args.queries))+'\n'))
+    jar.stdin.write(gen_query(args))
+    jar.stdin.flush()
     for ln in jar.stdout:
         num_queries -= 1
-        print(ln[:-1].decode(ENCODING))
+        print("STDOUT jar: "+ln[:-1].decode(ENCODING))
         end_query = time.time_ns()
 
         if args.debug:
             print(f"Benchmark query execution time: {(end_query - start_query) / 1_000_000_000:.2f} seconds")
 
+        print("_" * 70)
+
         if num_queries > 0:
             start_query = time.time_ns()
-            jar.stdin.write(str.encode(gen_query(args.queries == "r" if random.randint(2, 11) else int(args.queries))+'\n'))
+            jar.stdin.write(gen_query(args))
+            jar.stdin.flush()
         else:
+            jar.stdin.write(b"exit\n")
+            jar.stdin.flush()
             break
 
     end_queries = time.time_ns()
@@ -70,11 +78,18 @@ def benchmark(args):
 ##############################
 
 
-def gen_query(depth):
+def gen_query(args):
+    depth = 0
+    if args.depth == "r":
+        depth = random.randint(2, 11)
+    else:
+        depth = int(args.depth)
+
     query = "(a)"
-    for i in range(depth - 1):
+    for i in range(depth):
         query += "->("+chr(98 + i)+")"
-    return query
+    print("Depth "+str(depth) + ": " + query)
+    return str.encode(query+"\n")
 
 ##############################
 ##############################

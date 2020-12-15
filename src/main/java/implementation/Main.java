@@ -43,9 +43,9 @@ public class Main {
             System.out.println(csr.getNeighbors(i));
         } */
 
-        do {
+        while (queryengine.readAndExecQuery()) {
             // System.out.println("Write a query:");
-            System.out.print("");
-        } while (queryengine.readAndExecQuery());
+            System.out.println("done");
+        }
     }
 }

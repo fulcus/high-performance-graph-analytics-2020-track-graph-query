@@ -46,6 +46,9 @@ public class CSRE implements CSREngine {
         }
 
         ArrayList<Integer> sub_neighbors = csr.getNeighbors(vertex_id);
+        if(sub_neighbors == null)
+            return;
+
         for(Integer node_id : sub_neighbors){
             Integer[] sub_query_result = query_result.clone();
             sub_query_result[sub_query_result.length - depth] = node_id;
@@ -54,6 +57,9 @@ public class CSRE implements CSREngine {
     }
 
     private ArrayList<Integer[]> sub_traverse_bfs(CompressedSparseRow csr, ArrayList<Integer[]> vertex_query_results, int depth) {
+        if(vertex_query_results == null || vertex_query_results.size() == 0)
+            return new ArrayList<>();
+
         if(depth == 0){
             ArrayList<Integer[]> results = new ArrayList<>();
             results:
@@ -74,6 +80,9 @@ public class CSRE implements CSREngine {
         ArrayList<Integer[]> sub_vertex_query_result = new ArrayList<>();
         for (Integer[] vertex_query_result : vertex_query_results) {
             ArrayList<Integer> sub_neighbors = csr.getNeighbors(vertex_query_result[vertex_query_result.length - depth - 1]);
+            if(sub_neighbors == null)
+                continue;
+
             for (Integer node_id : sub_neighbors) {
                 Integer[] sub_query_result = vertex_query_result.clone();
                 sub_query_result[sub_query_result.length - depth] = node_id;
