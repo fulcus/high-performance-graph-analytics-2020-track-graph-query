@@ -5,6 +5,7 @@ import os
 import random
 from datetime import datetime
 from typing.io import IO
+import psutil
 
 ##############################
 ##############################
@@ -34,6 +35,7 @@ def benchmark(args):
     jar_bench_cmd = JAR_BENCH_CMD.format(TARGET_JAR, relationships_file, args.num_nodes_block, args.algorithms,
                                          args.limit_node_research)
     jar = Popen(jar_bench_cmd, shell=True, stdin=PIPE, stdout=PIPE, close_fds=True, cwd=PROJECT_PATH)
+    jar_ps = psutil.Process(jar.pid)
 
     if jar.stdout.readline()[:-1].decode(ENCODING).lower() == "Dataset loaded!".lower():
         log_msg("Dataset loaded!")
