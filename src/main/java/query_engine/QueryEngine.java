@@ -18,8 +18,11 @@ public class QueryEngine {
     private ExecTraverseBFS exectraversebfs = null;
     private ExecTraverseDFS exectraversedfs = null;
 
+    private String algorithms = null;
+
     // Basic constructor
-    public QueryEngine(CSR csr, HashJoin hash) {
+    public QueryEngine(String algorithms, CSR csr, HashJoin hash) {
+        this.algorithms = algorithms;
         this.csr = csr;
         this.hash = hash;
 
@@ -29,8 +32,8 @@ public class QueryEngine {
     }
 
     // Useful to set the max number of nodes for the research
-    public QueryEngine(CSR csr, HashJoin hash, int limit_research) {
-        this(csr, hash);
+    public QueryEngine(String algorithms, CSR csr, HashJoin hash, int limit_research) {
+        this(algorithms, csr, hash);
         this.limit_research = limit_research;
     }
 
@@ -47,12 +50,20 @@ public class QueryEngine {
 
         // Select the best operation to exec the query in base of the depth
         IQueryOperation operation = null;
-        if (depth <= 4)
-            operation = exectraversebfs;
-        else if (depth >= 9)
-            operation = execjoin;
-        else
-            operation = exectraversedfs;
+        switch (algorithms.charAt(depth - 1)) {
+            case 'b':
+                operation = exectraversebfs;
+                break;
+            case 'j':
+                operation = execjoin;
+                break;
+            case 'd':
+                operation = exectraversedfs;
+                break;
+            default:
+                System.err.println("Format error of algorithm string!");
+                System.exit(3);
+        }
 
         // Exec the query
         for(int i = 1; i <= limit_research; i++) {
