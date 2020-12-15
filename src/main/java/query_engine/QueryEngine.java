@@ -56,11 +56,11 @@ public class QueryEngine {
 
         // Exec the query
         for(int i = 1; i <= limit_research; i++) {
-            System.out.println("Traverse of " + i + " node!");
+            // System.out.println("Traverse of " + i + " node!");
             ArrayList<Integer[]> query_result = operation.execQuery(i, depth);
-            for (Integer[] integers : query_result) {
+            /* for (Integer[] integers : query_result) {
                 System.out.println(Arrays.toString(integers));
-            }
+            } */
         }
 
         return true;

@@ -25,7 +25,8 @@ public class HashJoinE implements HashJoinEngine {
         }
 
         ArrayList<Integer> sub_neighbors = tab1.getNeighbors(elementId);
-
+        if(sub_neighbors == null)
+            return;
         for (Integer node_id : sub_neighbors) {
             Integer[] sub_query_result = queryResult.clone();
             sub_query_result[sub_query_result.length - depth] = node_id;
