@@ -39,8 +39,11 @@ def benchmark(args):
 
     if jar.stdout.readline()[:-1].decode(ENCODING).lower() == "Dataset loaded!".lower():
         log_msg("Dataset loaded!")
+        log_msg("Memory status after dataset loaded:")
+        log_msg(str(jar_ps.memory_full_info()))
     else:
         log_msg("Dataset not loaded!")
+        jar.kill()
         exit(1)
     end_load = time.time_ns()
 
