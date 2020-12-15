@@ -4,11 +4,10 @@ import time
 import os
 import random
 from datetime import datetime
+from typing.io import IO
 
 ##############################
 ##############################
-from typing import TextIO
-from typing.io import IO
 
 DEFAULT_NUM_NODES_BLOCK = 1000
 RUN_PATH = os.getcwd() + "/"
@@ -21,7 +20,7 @@ ENCODING = 'utf-8'
 ##############################
 ##############################
 
-JAR_BENCH_CMD = "java -jar {} {} {}"
+JAR_BENCH_CMD = "java -jar {} {} {} {}"
 
 
 def benchmark(args):
@@ -32,7 +31,7 @@ def benchmark(args):
 
     log_msg("Run benchmark!")
     start_load = time.time_ns()
-    jar_bench_cmd = JAR_BENCH_CMD.format(TARGET_JAR, relationships_file, args.num_nodes_block)
+    jar_bench_cmd = JAR_BENCH_CMD.format(TARGET_JAR, relationships_file, args.num_nodes_block, args.algorithms)
     jar = Popen(jar_bench_cmd, shell=True, stdin=PIPE, stdout=PIPE, close_fds=True, cwd=PROJECT_PATH)
 
     if jar.stdout.readline()[:-1].decode(ENCODING).lower() == "Dataset loaded!".lower():
@@ -42,7 +41,7 @@ def benchmark(args):
         exit(1)
     end_load = time.time_ns()
 
-    if args.debug:
+    if args.verbose:
         log_msg(f"Benchmark total loading relationships time: {(end_load - start_load) / 1_000_000_000:.2f} seconds")
 
     log_msg("#" * 70)
@@ -73,8 +72,9 @@ def benchmark(args):
 
     end_queries = time.time_ns()
 
-    log_msg(f"Benchmark {args.queries} queries execution time: "
-            f"{(end_queries - start_queries) / 1_000_000_000:.2f} seconds")
+    if args.verbose:
+        log_msg(f"Benchmark {args.queries} queries execution time: "
+                f"{(end_queries - start_queries) / 1_000_000_000:.2f} seconds")
 
 
 ##############################
@@ -82,14 +82,14 @@ def benchmark(args):
 
 
 def gen_query(args):
-    depth = 0
+    depth: int
     if args.depth == "r":
-        depth = random.randint(2, 11)
+        depth = random.randint(1, 11)
     else:
         depth = int(args.depth)
 
     query = "(a)"
-    for i in range(depth):
+    for i in range(depth - 1):
         query += "->(" + chr(98 + i) + ")"
     log_msg("Depth " + str(depth) + ": " + query)
     return str.encode(query + "\n")
@@ -104,6 +104,7 @@ print_stdout = False
 
 def init_log(args):
     global log_file
+    global print_stdout
     log_file = open(args.log_path + datetime.now().strftime("%Y_%m_%d_%H_%M_%S") + ".log", "w+")
 
     log_file.write("Args of execution benchmark:\n\n")
@@ -144,7 +145,7 @@ if __name__ == "__main__":
                         help="If present, build the project")
     parser.add_argument("-d", "--debug", action="store_true", default=False,
                         help="If present, print debug messages")
-    parser.add_argument("-v", "--verbose", action="store_false",
+    parser.add_argument("-v", "--verbose", action="store_true", default=False,
                         help="If present, print with more details")
     parser.add_argument("-n", "--num_nodes_block", metavar="N", type=int, default=DEFAULT_NUM_NODES_BLOCK,
                         help="Number of the nodes loaded from the file")
@@ -156,6 +157,10 @@ if __name__ == "__main__":
                         help="Depth of queries between 2 and 11, default is random")
     parser.add_argument("-lp", "--log_path", metavar="N", type=str, default=RUN_PATH,
                         help="The path where the logs are saved, default the path of execution of the benchmark")
+    parser.add_argument("-a", "--algorithms", metavar="N", type=str, default="j,td,tb",
+                        help="Select algorithms, comma separated(j=join, tb=traverse-bfs, td=traverse-dfs). "
+                             "Default value j,td,tb")
+
 
     # Parse the input arguments;
     args = parser.parse_args()
@@ -168,8 +173,10 @@ if __name__ == "__main__":
                      cwd=PROJECT_PATH)
         result.check_returncode()
 
-    print("Benchmarking...")
+    log_msg("Benchmarking...")
+    start_bench = time.time_ns()
     benchmark(args)
-    print("Benchmark ended!")
+    end_bench = time.time_ns()
+    log_msg(f"Benchmark ended! Time to execution: {(end_bench - start_bench) / 1_000_000_000:.2f} seconds")
 
     end_log()
