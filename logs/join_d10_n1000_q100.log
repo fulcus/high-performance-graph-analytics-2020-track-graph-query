@@ -1,0 +1,423 @@
+Args of execution benchmark:
+
+build : False
+debug : False
+verbose : True
+num_nodes_block : 1000
+file : soc-pokec-relationships.txt
+queries : 100
+depth : 10
+log_path : /home/pierpaolo/PycharmProjects/high-performance-graph-analytics-2020-track-graph-query/
+algorithms : jjjjjjjjjj
+limit_node_research : 3000
+----------------------------------------------------------------------
+Benchmarking...
+Run benchmark!
+Pid subprocess: 28996
+Dataset loaded!
+Memory status after dataset loaded:34160640 bytes
+pfullmem(rss=36659200, vms=4797198336, shared=26128384, text=8192, lib=0, data=224374784, dirty=0, uss=34160640, pss=34574336, swap=0)
+Benchmark total loading relationships time: 0.07 seconds
+######################################################################
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.89 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.60 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.40 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.60 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.26 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.61 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.45 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.37 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.31 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.36 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.43 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.45 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.46 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.32 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.46 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.42 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.46 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.30 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.43 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.44 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.54 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.33 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.42 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.39 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.47 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.42 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.43 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.42 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.50 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.46 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.40 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.45 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.26 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.47 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.37 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.44 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.41 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.41 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.46 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.36 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.40 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.36 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.46 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.40 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.45 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.63 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.45 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.43 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.40 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.47 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.45 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.42 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.46 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.39 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.46 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.42 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.38 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.37 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.26 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.45 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.39 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.56 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.37 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.38 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.43 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.29 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.43 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.43 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.42 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.40 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.28 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.43 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.46 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.47 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.45 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.38 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.42 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.42 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.41 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.42 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.39 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.43 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.28 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.53 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.41 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.41 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.40 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.45 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.42 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.41 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.40 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.40 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.29 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.42 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.48 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.37 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.27 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.41 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.52 seconds
+______________________________________________________________________
+Depth 10: (a)->(b)->(c)->(d)->(e)->(f)->(g)->(h)->(i)->(j)->(k)
+STDOUT jar: done
+Benchmark query execution time: 1.28 seconds
+______________________________________________________________________
+Benchmark 100 queries execution time: 142.17 seconds
+Benchmark ended! Time to execution: 142.24 seconds
